@@ -1,6 +1,7 @@
 package com.cowin.module;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
@@ -23,7 +24,7 @@ public class Vaccine {
 	@Pattern(regexp = "^[0-9]", message="Invalid Vaccine Count")
 	private int vaccineCount;
 	
-	@OneToMany
+	@ManyToOne
 	private VaccineCenter vaccinecenter;
 	
 }
