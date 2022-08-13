@@ -2,6 +2,7 @@ package com.cowin.module;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.cowin.utils.IdCard;
+import com.cowin.utils.AdharCard;
+import com.cowin.utils.PanCard;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +31,10 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer memberId;
 	
+	@NotNull(message = "Mobile field should not be empty")
+	@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Invalid Mobile No.")
+	private String mobileno;
+	
 	@NotNull(message = "Name field should not be empty..")
 	@Size(min=3,max=255, message = "Your name should contain minimum 3 letters and max 255.")
 	@Pattern(regexp="^[A-Z][a-z]*", message = "Iavalid name - name should not contain special characters.")
@@ -42,7 +48,10 @@ public class Member {
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate yeardob;
 	
+	@Embedded
+	private AdharCard adharcard;
 	
-	private IdCard idcard;
+	@Embedded
+	private PanCard pancard;
 	
 }

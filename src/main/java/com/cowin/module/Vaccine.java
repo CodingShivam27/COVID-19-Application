@@ -1,8 +1,10 @@
 package com.cowin.module;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +16,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vaccine {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer vaccineId;
 
 	@Pattern(regexp="^[A-Z][a-z][0-9]*", message = "Invalid Vaccine Name")
 	private String vaccineName;

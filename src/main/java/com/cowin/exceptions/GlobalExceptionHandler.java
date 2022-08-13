@@ -62,4 +62,21 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(MemberNotFoundException.class)
+	public ResponseEntity<MyErrorDetails> MemberNotFoundException(MemberNotFoundException mexp, WebRequest req) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
+				mexp.getMessage(), req.getDescription(false));
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(MemberAlreadyExistException.class)
+	public ResponseEntity<MyErrorDetails> MemberNotFoundException(MemberAlreadyExistException mexp, WebRequest req) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
+				mexp.getMessage(), req.getDescription(false));
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
 }

@@ -11,7 +11,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class IdCard {
 	
 	@NotNull(message = "Name field should not be empty..")
@@ -42,6 +53,5 @@ public class IdCard {
 	@NotBlank(message = "pincode field should not be empty")
 	@Pattern(regexp="^[1-9][0-9]{5}$", message = "Iavalid pincode..")
 	private String pincode;
-	
 	
 }
