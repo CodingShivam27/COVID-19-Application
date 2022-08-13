@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cowin.exceptions.MemberAlreadyExistException;
 import com.cowin.exceptions.MemberNotFoundException;
+import com.cowin.exceptions.UnAuthorizedPerson;
 import com.cowin.module.CurrentMemberSession;
 import com.cowin.module.Member;
 import com.cowin.repository.MemberDao;
@@ -20,9 +21,6 @@ public class MemberServiceImpl implements MemberSerive {
 
 	@Autowired
 	private MemberDao memDao;
-	
-	@Autowired
-	private CurrentLogInMember curMem;
 	
 	@Autowired
 	private CurrentMemberSession currentMemberSession;
