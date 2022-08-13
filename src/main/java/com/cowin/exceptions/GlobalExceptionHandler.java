@@ -67,10 +67,19 @@ public class GlobalExceptionHandler {
 
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
 				mexp.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(UnAuthorizedPerson.class)
+	public ResponseEntity<MyErrorDetails> UnAuthorizedPerson(UnAuthorizedPerson uaexp, WebRequest req) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
+								uaexp.getMessage(), req.getDescription(false));
 
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(MemberAlreadyExistException.class)
 	public ResponseEntity<MyErrorDetails> MemberNotFoundException(MemberAlreadyExistException mexp, WebRequest req) {
 
