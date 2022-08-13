@@ -1,11 +1,14 @@
 package com.cowin.module;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +32,7 @@ public class Vaccine {
 	
 	@Pattern(regexp = "^[0-9]", message="Invalid Vaccine Count")
 	private int vaccineCount;
+	
 	
 	@ManyToOne
 	private VaccineCenter vaccinecenter;
