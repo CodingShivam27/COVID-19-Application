@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.cowin.utils.IdCard;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -41,5 +42,7 @@ public class Member {
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate yeardob;
 	
+	
+	private IdCard idcard;
 	
 }
