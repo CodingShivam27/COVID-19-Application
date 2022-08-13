@@ -19,6 +19,8 @@ public class CurrentLogInMemberImpl implements CurrentLogInMember{
 	
 	@Autowired
 	private SessionRepo sessionREPO;
+	
+	
 
 	@Override
 	public CurrentMemberSession getCurrentMemberSession(String key) {

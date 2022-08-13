@@ -1,5 +1,6 @@
 package com.cowin.exceptions;
 
+@SuppressWarnings("serial")
 public class UnAuthorizedPerson extends RuntimeException {
 
 	public UnAuthorizedPerson() {

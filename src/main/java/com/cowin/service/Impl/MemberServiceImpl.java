@@ -13,7 +13,6 @@ import com.cowin.module.Member;
 import com.cowin.repository.MemberDao;
 import com.cowin.service.MemberSerive;
 import com.cowin.utils.AdharCard;
-import com.cowin.utils.CurrentLogInMember;
 import com.cowin.utils.PanCard;
 
 @Service
@@ -22,8 +21,10 @@ public class MemberServiceImpl implements MemberSerive {
 	@Autowired
 	private MemberDao memDao;
 	
-	@Autowired
+	@Autowired(required = false)
 	private CurrentMemberSession currentMemberSession;
+	
+	
 
 	@Override
 	public Member saveMember(Member member) {

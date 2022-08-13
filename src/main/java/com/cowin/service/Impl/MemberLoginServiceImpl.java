@@ -1,10 +1,12 @@
 package com.cowin.service.Impl;
 
 import java.time.LocalDateTime;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.cowin.exceptions.MemberAlreadyExistException;
 import com.cowin.exceptions.MemberNotFoundException;
@@ -29,6 +31,7 @@ public class MemberLoginServiceImpl implements MemberLoginService{
 	
 	@Autowired
 	private CurrentLogInMember currentLogInMember;
+	
 
 	@Override
 	public String logIntoAccount(MemberDTO memberDto) {
@@ -50,7 +53,8 @@ public class MemberLoginServiceImpl implements MemberLoginService{
 			
 		String key = RandomString.make(6);
 		
-		CurrentMemberSession currentMemberSession = new CurrentMemberSession(newMember.getMemberId(), key, LocalDateTime.now());			
+		CurrentMemberSession currentMemberSession = new CurrentMemberSession(newMember.getMemberId(), key, LocalDateTime.now());
+		
 		sessionRepo.save(currentMemberSession);
 
 		return currentMemberSession.toString();
@@ -67,6 +71,7 @@ public class MemberLoginServiceImpl implements MemberLoginService{
 		}
 		
 		CurrentMemberSession currentMemberSession = currentLogInMember.getCurrentMemberSession(key);
+		
 		sessionRepo.delete(currentMemberSession);
 		
 		return "Logged Out Successfully";
