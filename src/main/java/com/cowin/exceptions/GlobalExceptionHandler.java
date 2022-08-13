@@ -62,4 +62,13 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(UnAuthorizedPerson.class)
+	public ResponseEntity<MyErrorDetails> UnAuthorizedPerson(UnAuthorizedPerson uaexp, WebRequest req) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
+								uaexp.getMessage(), req.getDescription(false));
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
+	
 }
