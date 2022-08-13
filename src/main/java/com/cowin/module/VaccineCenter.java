@@ -36,7 +36,7 @@ public class VaccineCenter {
 	private LocalDate date;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "VaccineCenter")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccinecenter")
 	private List<Vaccine> vaccine;
 	
 	
