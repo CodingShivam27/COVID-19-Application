@@ -10,6 +10,7 @@ public class VaccineServiceImpl implements VaccineService {
 
 	@Autowired
 	private VaccineDao vaccinedao;
+
 	@Override
 	public Vaccine saveVaccine(Vaccine vaccine) {
 		

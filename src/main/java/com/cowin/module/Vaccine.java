@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,8 +31,7 @@ public class Vaccine {
 	@Pattern(regexp = "^[0-9]", message="Invalid Vaccine Count")
 	private int vaccineCount;
 	
-	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private VaccineCenter vaccinecenter;
 	
 }
