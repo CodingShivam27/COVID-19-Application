@@ -1,7 +1,24 @@
 package com.cowin.service;
 
+import java.util.List;
+
 import com.cowin.module.Vaccine;
 
 public interface VaccineService {
-		public Vaccine saveVaccine(Vaccine vaccine);
+	
+	public Vaccine getVaccineById(Integer id);
+	
+	public List<Vaccine> getAllVaccine();
+	
+	public Vaccine getVaccineByPrice(double price);
+
+	public Vaccine getVaccineByName(String name);
+	
+	public Vaccine saveVaccine(Vaccine vaccine,String admin, String pass);
+	
+	public Vaccine updateVaccine(Vaccine vaccine,String admin, String pass);
+	
+	public Boolean deleteVaccine(Vaccine vaccine,String admin, String pass);
+		
+		
 }

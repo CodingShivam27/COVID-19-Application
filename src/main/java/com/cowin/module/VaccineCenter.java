@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,8 @@ import lombok.NoArgsConstructor;
 public class VaccineCenter {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique=true)
+
 	private Integer center_id;
 	
 //	@NotNull(message = "date field should not be empty")
