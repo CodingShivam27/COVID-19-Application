@@ -88,4 +88,21 @@ public class GlobalExceptionHandler {
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(VaccineCenterNotFound.class)
+	public ResponseEntity<MyErrorDetails> vaccineCenterNotFound(VaccineCenterNotFound vcnexp, WebRequest wr) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), vcnexp.getMessage(), wr.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(VaccineNotFound.class)
+	public ResponseEntity<MyErrorDetails> vaccineNotFound(VaccineNotFound vnexp, WebRequest wr) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), vnexp.getMessage(), wr.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
 }
