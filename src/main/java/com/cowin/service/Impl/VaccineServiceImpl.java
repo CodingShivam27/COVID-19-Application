@@ -47,7 +47,7 @@ public class VaccineServiceImpl implements VaccineService {
 
 	@Override
 	public Vaccine getVaccineByName(String name) {
-		Vaccine vaccine = vaccinedao.findbyVaccineName(name);
+		Vaccine vaccine = vaccinedao.findByVaccineName(name);
 		if(vaccine==null) {
 			throw new VaccineNotFound("No Vaccine Found");
 		}

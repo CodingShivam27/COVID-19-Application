@@ -11,7 +11,7 @@ public interface VaccineCenterService {
 	
 	public List<VaccineCenter> getAllVaccineCenter();
 	
-	public VaccineCenter getVaccineCenterByCity(String city);
+//	public VaccineCenter getVaccineCenterByCity(String city);
 	
 	public VaccineCenter getVaccineCenterByDate(LocalDate date);
 	
