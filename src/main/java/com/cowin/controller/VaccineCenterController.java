@@ -1,7 +1,5 @@
 package com.cowin.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +15,9 @@ public class VaccineCenterController {
 	private VaccineCenterService vaccinecenterservice;
 	
 	@PostMapping("/save")
-	public VaccineCenter saveVaccinecenter(@RequestBody VaccineCenter vaccinecenter) {
-
+	public VaccineCenter saveVaccinecenter(@RequestBody VaccineCenter vaccinecenter) {		
+		
+		
 		return vaccinecenterservice.saveVaccineCenter(vaccinecenter);
 	}
 	

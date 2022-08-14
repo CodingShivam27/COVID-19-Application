@@ -17,6 +17,7 @@ public class VaccineCenterServiceImpl implements VaccineCenterService {
 	@Override
 	public VaccineCenter saveVaccineCenter(VaccineCenter center) {
 		
+		
 		return vaccinecenterdao.save(center);
 	}
 

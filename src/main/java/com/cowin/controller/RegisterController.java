@@ -20,19 +20,20 @@ public class RegisterController {
 
 	@Autowired
 	private MemberLoginService memberLogin;
-	
+
 	@Autowired
 	private MemberSerive memService;
-	
+
 	@PostMapping("/register")
 	public String registerMember(@Valid @RequestBody Member memR) {
-		
+
 		Member newMem = memService.saveMember(memR);
-		
-		if(newMem!=null) return "Register succeefully";
-		
+
+		if (newMem != null)
+			return "Register succeefully";
+
 		throw new MemberAlreadyExistException("LOL");
-		
+
 	}
 
 	@PostMapping("/login")

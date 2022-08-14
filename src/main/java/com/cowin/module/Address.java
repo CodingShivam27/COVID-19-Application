@@ -1,7 +1,6 @@
 package com.cowin.module;
 
 import javax.persistence.Embeddable;
-import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
