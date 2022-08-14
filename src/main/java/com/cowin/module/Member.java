@@ -19,18 +19,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Member {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer memberId;
 	
+//	@Column(unique = true)
 	@NotNull(message = "Mobile field should not be empty")
 	@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Invalid Mobile No.")
 	private String mobileno;

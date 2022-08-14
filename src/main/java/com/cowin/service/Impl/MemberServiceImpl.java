@@ -20,86 +20,132 @@ public class MemberServiceImpl implements MemberSerive {
 
 	@Autowired
 	private MemberDao memDao;
-	
+
 	@Autowired(required = false)
 	private CurrentMemberSession currentMemberSession;
-	
-	
 
 	@Override
-	public Member saveMember(Member member) {
+	public Member saveMember(Member member) throws MemberAlreadyExistException{
 
 		Optional<Member> opt = memDao.findByMobileno(member.getMobileno());
-
-		if (opt.isPresent())
-			throw new MemberAlreadyExistException("Member already exists..");
-
+		
+		if (opt.isPresent()) {
+			Member existinMem = opt.get();
+			if (existinMem.getAdharcard().getAdharNo().equals(member.getAdharcard().getAdharNo()))
+				throw new MemberAlreadyExistException(
+						"Member already exists with adharNo: " + member.getAdharcard().getAdharNo());	
+			else if(existinMem.getPancard().getPanNo().equals(member.getPancard().getPanNo())) 
+				throw new MemberAlreadyExistException(
+						"Member already exists with panNo: " + member.getPancard().getPanNo());
+			else
+				return memDao.save(member);
+		}
+		else
 		return memDao.save(member);
 	}
 
 	@Override
-	public Member updatemember(Member member, String key) {
-		
+	public Member updatemember(Member member, String key)throws MemberNotFoundException, UnAuthorizedPerson{
+
 		Optional<Member> opt = memDao.findByMobileno(member.getMobileno());
-		
-		if(!opt.isPresent()) throw new MemberNotFoundException("Member does not exists..");
-		
-		if(currentMemberSession.getSessionKey() == key) {
-			memDao.save(member);
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists with mobile no: " + member.getMobileno());
+
+		if (currentMemberSession.getSessionKey() == key) {
+
+			if (memDao.findByAdharcard(member.getAdharcard()).isPresent())
+				throw new MemberAlreadyExistException(
+						"Member already exists with adharNo: " + member.getAdharcard().getAdharNo());
+
+			else if (memDao.findByPancard(member.getPancard()).isPresent())
+				throw new MemberAlreadyExistException(
+						"Member already exists with panNo: " + member.getPancard().getPanNo());
+
+			else
+				memDao.save(member);
 		}
-		
+
 		throw new UnAuthorizedPerson("Unauthorized person..");
-		
-		
+
 	}
 
 	@Override
-	public Boolean deletemember(Member member, String key) {
-		
+	public Boolean deletemember(Member member, String key) throws MemberNotFoundException, UnAuthorizedPerson{
+
 		Optional<Member> opt = memDao.findByMobileno(member.getMobileno());
-		
-		if(!opt.isPresent()) throw new MemberNotFoundException("Member does not exists..");
-		
-		if(currentMemberSession.getSessionKey() == key) {
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists with mobile no: " + member.getMobileno());
+
+		if (currentMemberSession.getSessionKey() == key) {
 			memDao.delete(member);
 			return true;
 		}
-		
+
 		throw new UnAuthorizedPerson("Unauthorized person..");
-		
+
 	}
 
 	@Override
-	public Member getMemberByMemberId(Integer id) {
+	public Member getMemberByMemberId(Integer id, String key) throws MemberNotFoundException, UnAuthorizedPerson{
 
 		Optional<Member> opt = memDao.findById(id);
-		
-		return opt.orElseThrow(() -> new MemberNotFoundException("Member does not exists.."));
-		
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists..");
+
+		if (currentMemberSession.getSessionKey() == key) {
+			return opt.get();
+		}
+
+		throw new UnAuthorizedPerson("Unauthorized person..");
+
 	}
 
 	@Override
-	public Member getMemberByMobileNo(String moblieNo) {
+	public Member getMemberByMobileNo(String moblieNo, String key) throws MemberNotFoundException, UnAuthorizedPerson {
 
 		Optional<Member> opt = memDao.findByMobileno(moblieNo);
-		
-		return opt.orElseThrow(() -> new MemberNotFoundException("Member does not exists.."));
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists..");
+
+		if (currentMemberSession.getSessionKey() == key) {
+			return opt.get();
+		}
+
+		throw new UnAuthorizedPerson("Unauthorized person..");
 	}
 
 	@Override
-	public Member getMemberByAdharNo(Long adharNo) {
+	public Member getMemberByAdharNo(String adharNo, String key)throws MemberNotFoundException, UnAuthorizedPerson{
 
 		Optional<Member> opt = memDao.findByAdharcard(new AdharCard(adharNo));
-		
-		return opt.orElseThrow(() -> new MemberNotFoundException("Member does not exists.."));
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists..");
+
+		if (currentMemberSession.getSessionKey() == key) {
+			return opt.get();
+		}
+
+		throw new UnAuthorizedPerson("Unauthorized person..");
 	}
 
 	@Override
-	public Member getMemebrByPanNo(String panNo) {
-		
+	public Member getMemebrByPanNo(String panNo, String key)throws MemberNotFoundException, UnAuthorizedPerson{
+
 		Optional<Member> opt = memDao.findByPancard(new PanCard(panNo));
-		
-		return opt.orElseThrow(() -> new MemberNotFoundException("Member does not exists.."));
+
+		if (!opt.isPresent())
+			throw new MemberNotFoundException("Member does not exists..");
+
+		if (currentMemberSession.getSessionKey() == key) {
+			return opt.get();
+		}
+
+		throw new UnAuthorizedPerson("Unauthorized person..");
 	}
 
 }

@@ -16,14 +16,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<MyErrorDetails> myExpHandlerMain(Exception ex, WebRequest wr) {
-
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), wr.getDescription(false));
-
-		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
-	}
-
 	@ExceptionHandler(RollbackException.class)
 	public ResponseEntity<MyErrorDetails> handleRollbackException(Exception exp, WebRequest req) {
 
@@ -77,7 +69,7 @@ public class GlobalExceptionHandler {
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
 								uaexp.getMessage(), req.getDescription(false));
 
-		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(MemberAlreadyExistException.class)
@@ -86,6 +78,14 @@ public class GlobalExceptionHandler {
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
 				mexp.getMessage(), req.getDescription(false));
 
-		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<MyErrorDetails> myExpHandlerMain(Exception ex, WebRequest wr) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), ex.getMessage(), wr.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
 }
