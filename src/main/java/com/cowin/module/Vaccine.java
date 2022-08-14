@@ -20,13 +20,13 @@ public class Vaccine {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer vaccineId;
 
-	@Pattern(regexp = "^[A-Z][a-z][0-9]*", message = "Invalid Vaccine Name")
+//	@Pattern(regexp = "^[A-Z][a-z][0-9]*", message = "Invalid Vaccine Name")
 	private String vaccineName;
 
-	@Pattern(regexp = "^[0-9]", message = "Invalid Vaccine Price")
+//	@Pattern(regexp = "^[0-9]", message = "Invalid Vaccine Price")
 	private Double price;
 
-	@Pattern(regexp = "^[0-9]", message = "Invalid Vaccine Count")
+//	@Pattern(regexp = "^[0-9]", message = "Invalid Vaccine Count")
 	private Integer vaccineCount;
 	
 }

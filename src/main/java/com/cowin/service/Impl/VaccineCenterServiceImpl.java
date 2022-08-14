@@ -41,19 +41,19 @@ public class VaccineCenterServiceImpl implements VaccineCenterService {
 	}
 
 
-	@Override
-	public VaccineCenter getVaccineCenterByCity(String city) {
-		VaccineCenter vac = vaccinecenterdao.findbyCenter_address(city);
-		if(vac==null) {
-			throw new VaccineCenterNotFound("No Center Avaliable with this Address "+city);
-		}
-		return vac;
-	}
+//	@Override
+//	public VaccineCenter getVaccineCenterByCity(String city) {
+//		VaccineCenter vac = vaccinecenterdao.findByCenter_address(city);
+//		if(vac==null) {
+//			throw new VaccineCenterNotFound("No Center Avaliable with this Address "+city);
+//		}
+//		return vac;
+//	}
 
 
 	@Override
 	public VaccineCenter getVaccineCenterByDate(LocalDate date) {
-		VaccineCenter vac = vaccinecenterdao.findbyDate(date);
+		VaccineCenter vac = vaccinecenterdao.findByDate(date);
 		if(vac==null) {
 			throw new VaccineCenterNotFound("No Center Avaliable on that date "+date);
 		}

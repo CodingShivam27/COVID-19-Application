@@ -1,6 +1,9 @@
 package com.cowin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +17,16 @@ public class VaccineCenterController {
 	@Autowired
 	private VaccineCenterService vaccinecenterservice;
 	
-	@PostMapping("/save")
-	public VaccineCenter saveVaccinecenter(@RequestBody VaccineCenter vaccinecenter) {		
+	@GetMapping("/Allcenter")
+	public List<VaccineCenter> saveVaccinecenter() {		
 		
 		
-		return vaccinecenterservice.saveVaccineCenter(vaccinecenter);
+		return vaccinecenterservice.getAllVaccineCenter();
+	}
+	
+	@PostMapping("/savecenter")
+	public VaccineCenter savecenter(@RequestBody VaccineCenter vac) {
+		return vaccinecenterservice.saveVaccineCenter(vac, null, null);
 	}
 	
 }

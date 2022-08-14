@@ -8,7 +8,7 @@ import com.cowin.module.VaccineCenter;
 
 public interface VaccineCenterDao extends JpaRepository<VaccineCenter, Integer> {
 			
-	public VaccineCenter findbyDate(LocalDate date);
+	public VaccineCenter findByDate(LocalDate date);
 	
-	public VaccineCenter findbyCenter_address(String city);
+//	public VaccineCenter findByCenter_address(String city);
 }
