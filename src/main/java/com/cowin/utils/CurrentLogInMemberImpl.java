@@ -2,6 +2,7 @@ package com.cowin.utils;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,14 +20,17 @@ public class CurrentLogInMemberImpl implements CurrentLogInMember{
 	
 	@Autowired
 	private SessionRepo sessionREPO;
-	
+//	
+//	@Autowired
+//	private CurrentMemberSession curSes;
+//	
 	
 
 	@Override
 	public CurrentMemberSession getCurrentMemberSession(String key) {
 		Optional<CurrentMemberSession> opt = sessionREPO.findBySessionKey(key);
 		
-		if(!opt.isPresent()) throw new MemberNotFoundException("");
+		if(!opt.isPresent()) throw new MemberNotFoundException("Member is currently not logged in..");
 		
 		return opt.get();
 	}
@@ -35,19 +39,30 @@ public class CurrentLogInMemberImpl implements CurrentLogInMember{
 	public Integer getCurrentMemberSessionId(String key) {
 		Optional<CurrentMemberSession> opt = sessionREPO.findBySessionKey(key);
 		
-		if(!opt.isPresent()) throw new MemberNotFoundException("");
+		if(!opt.isPresent()) throw new MemberNotFoundException("Member is currently not logged in..");
 		
 		return opt.get().getCurMid();
 	}
 
 	@Override
-	public Member getCurrentMember(String key) {
+	public Member getCurrentMemberBySessionKey(String key) {
 		
 		Optional<CurrentMemberSession> opt = sessionREPO.findBySessionKey(key);
 		
-		if(!opt.isPresent()) throw new MemberNotFoundException("");
+		if(!opt.isPresent()) throw new MemberNotFoundException("Member is currently not logged in..");
 		
-		return memberDAO.getById(opt.get().getMemberId());
+		return memberDAO.getReferenceById(opt.get().getMemberId());
+
+	}
+
+	@Override
+	public Member getCurrentMemberByMobileNo(String mobileNo) {
+
+		Optional<CurrentMemberSession> opt = sessionREPO.findByMobileNo(mobileNo);
+		
+		if(!opt.isPresent()) throw new MemberNotFoundException("Member is currently not logged in..");
+		
+		return memberDAO.getReferenceById(opt.get().getMemberId());
 
 	}
 

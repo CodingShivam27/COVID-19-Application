@@ -1,5 +1,6 @@
 package com.cowin.exceptions;
 
+@SuppressWarnings("serial")
 public class VaccineNotFound extends RuntimeException{
 
 	public VaccineNotFound() {

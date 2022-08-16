@@ -9,5 +9,7 @@ public interface CurrentLogInMember {
 
 	public Integer getCurrentMemberSessionId(String key);
 
-	public Member getCurrentMember(String key);
+	public Member getCurrentMemberBySessionKey(String key);
+	
+	public Member getCurrentMemberByMobileNo(String mobileNo);
 }

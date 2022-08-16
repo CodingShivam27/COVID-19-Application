@@ -53,21 +53,19 @@ public class GlobalExceptionHandler {
 
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(MemberNotFoundException.class)
 	public ResponseEntity<MyErrorDetails> MemberNotFoundException(MemberNotFoundException mexp, WebRequest req) {
 
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
-				mexp.getMessage(), req.getDescription(false));
-		
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), mexp.getMessage(), req.getDescription(false));
+
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(UnAuthorizedPerson.class)
 	public ResponseEntity<MyErrorDetails> UnAuthorizedPerson(UnAuthorizedPerson uaexp, WebRequest req) {
 
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
-								uaexp.getMessage(), req.getDescription(false));
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), uaexp.getMessage(), req.getDescription(false));
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
@@ -75,12 +73,11 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(MemberAlreadyExistException.class)
 	public ResponseEntity<MyErrorDetails> MemberNotFoundException(MemberAlreadyExistException mexp, WebRequest req) {
 
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
-				mexp.getMessage(), req.getDescription(false));
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), mexp.getMessage(), req.getDescription(false));
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<MyErrorDetails> myExpHandlerMain(Exception ex, WebRequest wr) {
 
@@ -88,7 +85,7 @@ public class GlobalExceptionHandler {
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(VaccineCenterNotFound.class)
 	public ResponseEntity<MyErrorDetails> vaccineCenterNotFound(VaccineCenterNotFound vcnexp, WebRequest wr) {
 
@@ -96,7 +93,7 @@ public class GlobalExceptionHandler {
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler(VaccineNotFound.class)
 	public ResponseEntity<MyErrorDetails> vaccineNotFound(VaccineNotFound vnexp, WebRequest wr) {
 
@@ -104,5 +101,5 @@ public class GlobalExceptionHandler {
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
-	
+
 }

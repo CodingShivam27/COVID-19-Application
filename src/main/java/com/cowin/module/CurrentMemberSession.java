@@ -8,16 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
+@Component
 public class CurrentMemberSession {
 	
 	@Id
@@ -27,13 +30,20 @@ public class CurrentMemberSession {
 	@Column(unique = true)
 	private Integer memberId;
 	
+	private String mobileNo;
+	
 	private String sessionKey;
 	
 	private LocalDateTime localDateTime;
-
-	public CurrentMemberSession(Integer memberId, String sessionKey, LocalDateTime localDateTime) {
+	
+	public CurrentMemberSession(){
+		
+	}
+	
+	public CurrentMemberSession(Integer memberId, String mobileNo, String sessionKey, LocalDateTime localDateTime) {
 		super();
 		this.memberId = memberId;
+		this.mobileNo = mobileNo;
 		this.sessionKey = sessionKey;
 		this.localDateTime = localDateTime;
 	}

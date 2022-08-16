@@ -1,21 +1,20 @@
 package com.cowin.module;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Embedded;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.cowin.utils.AdharCard;
-import com.cowin.utils.PanCard;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,26 +34,22 @@ public class Member {
 	
 //	@Column(unique = true)
 	@NotNull(message = "Mobile field should not be empty")
-	@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Invalid Mobile No.")
+//	@Pattern(regexp = "(0/91)?[7-9][0-9]{9}", message = "Invalid Mobile No.")
 	private String mobileno;
 	
-	@NotNull(message = "Name field should not be empty..")
-	@Size(min=3,max=255, message = "Your name should contain minimum 3 letters and max 255.")
-	@Pattern(regexp="^[A-Z][a-z]*", message = "Iavalid name - name should not contain special characters.")
-	private String name;
+//	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")s
+	private String passWord;
 	
-	@Pattern(regexp = "^(?:m|M|male|Male|f|F|female|Female)$",message = "Invalid Input")
-	private String gender;
-	
-	@NotNull(message = "date field should not be empty")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	@JsonFormat(pattern = "MM/dd/yyyy")
-	private LocalDate yeardob;
-	
-	@Embedded
+	@OneToOne(cascade = CascadeType.ALL)
+//	@JsonIgnore
 	private AdharCard adharcard;
 	
-	@Embedded
-	private PanCard pancard;
+//	, mappedBy = "member"orphanRemoval = true)
+	@OneToMany
+	@JoinColumn(name = "memberId_FK", referencedColumnName = "memberId")
+	@JsonIgnore
+	List<Appointment> appointments =  new ArrayList<>();
 	
 }
+
+//1 mobile ---> 5 members ----> appointments;
