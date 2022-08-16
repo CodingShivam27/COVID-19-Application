@@ -1,7 +1,7 @@
 package com.cowin.utils;
 
-import com.cowin.module.CurrentMemberSession;
-import com.cowin.module.Member;
+import com.cowin.model.CurrentMemberSession;
+import com.cowin.model.Member;
 
 public interface CurrentLogInMember {
 	

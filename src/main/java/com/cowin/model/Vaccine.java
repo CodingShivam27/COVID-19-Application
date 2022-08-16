@@ -1,4 +1,4 @@
-package com.cowin.module;
+package com.cowin.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

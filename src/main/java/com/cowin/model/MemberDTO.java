@@ -1,4 +1,4 @@
-package com.cowin.module;
+package com.cowin.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

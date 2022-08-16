@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cowin.module.AppoinmetDTO;
-import com.cowin.module.Appointment;
-import com.cowin.module.Member;
-import com.cowin.module.MemberDTO;
+import com.cowin.model.AppoinmetDTO;
+import com.cowin.model.Appointment;
+import com.cowin.model.Member;
+import com.cowin.model.MemberDTO;
 import com.cowin.service.AppointmentService;
 import com.cowin.service.MemberSerive;
 

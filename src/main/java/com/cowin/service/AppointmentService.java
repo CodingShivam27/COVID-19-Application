@@ -2,8 +2,8 @@ package com.cowin.service;
 
 import java.util.List;
 
-import com.cowin.module.AppoinmetDTO;
-import com.cowin.module.Appointment;
+import com.cowin.model.AppoinmetDTO;
+import com.cowin.model.Appointment;
 
 
 public interface AppointmentService {

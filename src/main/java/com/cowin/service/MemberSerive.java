@@ -5,9 +5,9 @@ import java.util.List;
 import com.cowin.exceptions.MemberAlreadyExistException;
 import com.cowin.exceptions.MemberNotFoundException;
 import com.cowin.exceptions.UnAuthorizedPerson;
-import com.cowin.module.Member;
-import com.cowin.module.MemberDTO;
-import com.cowin.module.VaccineCenterDTO;
+import com.cowin.model.Member;
+import com.cowin.model.MemberDTO;
+import com.cowin.model.VaccineCenterDTO;
 
 public interface MemberSerive {
 	

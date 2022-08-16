@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cowin.exceptions.MemberNotFoundException;
-import com.cowin.module.CurrentMemberSession;
-import com.cowin.module.Member;
+import com.cowin.model.CurrentMemberSession;
+import com.cowin.model.Member;
 import com.cowin.repository.MemberDao;
 import com.cowin.repository.SessionRepo;
 

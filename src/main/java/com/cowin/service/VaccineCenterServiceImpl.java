@@ -1,4 +1,4 @@
-package com.cowin.service.Impl;
+package com.cowin.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cowin.exceptions.VaccineCenterNotFound;
-import com.cowin.module.VaccineCenter;
+import com.cowin.model.VaccineCenter;
 import com.cowin.repository.VaccineCenterDao;
-import com.cowin.service.VaccineCenterService;
 
 @Service
 public class VaccineCenterServiceImpl implements VaccineCenterService {

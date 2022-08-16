@@ -2,7 +2,7 @@ package com.cowin.service;
 
 import java.util.List;
 
-import com.cowin.module.Vaccine;
+import com.cowin.model.Vaccine;
 
 public interface VaccineService {
 	

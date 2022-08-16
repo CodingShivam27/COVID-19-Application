@@ -1,4 +1,4 @@
-package com.cowin.service.Impl;
+package com.cowin.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,18 +11,15 @@ import com.cowin.exceptions.MemberAlreadyExistException;
 import com.cowin.exceptions.MemberNotFoundException;
 import com.cowin.exceptions.UnAuthorizedPerson;
 import com.cowin.exceptions.VaccineCenterNotFound;
-import com.cowin.module.AppoinmetDTO;
-import com.cowin.module.Appointment;
-import com.cowin.module.CurrentMemberSession;
-import com.cowin.module.Member;
-import com.cowin.module.Vaccine;
-import com.cowin.module.VaccineCenter;
+import com.cowin.model.AppoinmetDTO;
+import com.cowin.model.Appointment;
+import com.cowin.model.CurrentMemberSession;
+import com.cowin.model.Member;
+import com.cowin.model.Vaccine;
+import com.cowin.model.VaccineCenter;
 import com.cowin.repository.AppointmentDao;
 import com.cowin.repository.MemberDao;
 import com.cowin.repository.SessionRepo;
-import com.cowin.service.AppointmentService;
-import com.cowin.service.MemberSerive;
-import com.cowin.service.VaccineCenterService;
 import com.cowin.utils.CurrentLogInMember;
 
 @Service

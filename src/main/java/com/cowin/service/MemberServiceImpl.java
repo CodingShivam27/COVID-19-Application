@@ -1,4 +1,4 @@
-package com.cowin.service.Impl;
+package com.cowin.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,15 +13,14 @@ import com.cowin.exceptions.MemberAlreadyExistException;
 import com.cowin.exceptions.MemberNotFoundException;
 import com.cowin.exceptions.UnAuthorizedPerson;
 import com.cowin.exceptions.VaccineCenterNotFound;
-import com.cowin.module.CurrentMemberSession;
-import com.cowin.module.Member;
-import com.cowin.module.MemberDTO;
-import com.cowin.module.VaccineCenter;
-import com.cowin.module.VaccineCenterDTO;
+import com.cowin.model.CurrentMemberSession;
+import com.cowin.model.Member;
+import com.cowin.model.MemberDTO;
+import com.cowin.model.VaccineCenter;
+import com.cowin.model.VaccineCenterDTO;
 import com.cowin.repository.MemberDao;
 import com.cowin.repository.SessionRepo;
 import com.cowin.repository.VaccineCenterDao;
-import com.cowin.service.MemberSerive;
 import com.cowin.utils.CurrentLogInMember;
 
 import net.bytebuddy.utility.RandomString;
